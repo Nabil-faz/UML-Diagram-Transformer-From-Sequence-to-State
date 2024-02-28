@@ -1,0 +1,16 @@
+@startuml
+loop Artikel
+Kunde -> DinnerSystem : Bestellartikel hinzufügen
+end
+Kunde -> DinnerSystem : Bestellartikel bestätigen
+DinnerSystem -> Restaurant : Bestellartikel senden
+DinnerSystem <-- Restaurant : ok
+Kunde -> DinnerSystem : Zahlungsdetails
+DinnerSystem -> Bank : Zahlung verarbeiten
+DinnerSystem <-- Bank : ok
+DinnerSystem -> Restaurant : Bestellung bestätigen
+Kunde <-- DinnerSystem : bestätigen
+Kunde <- Restaurant : Essen ausliefern
+
+
+@enduml
