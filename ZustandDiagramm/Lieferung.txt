@@ -1,0 +1,24 @@
+@startuml
+[*] --> Idle 
+Idle --> DinnerSystem
+state DinnerSystem{
+[*] --> Idle0
+Idle0 -->S1 : Bestellartikelhinzufügen
+state S1{
+S1 --> S1 : Artikel
+[*] --> Idle.S1
+Idle.S1 -->S1.1 : Bestellartikelhinzufügen
+S1.1 --> s1.2 : Bestellartikelhinzufügen/
+s1.2 --> [*]
+}
+S1 --> S2 : !(Artikel)
+S2 --> S3 : Bestellartikelsenden/ok
+S3 --> S4 : ok/Zahlungsdetails
+S4 --> S5 : Zahlungsdetails/Zahlungverarbeiten
+S5 --> S6 : Zahlungverarbeiten/ok
+S6 --> S7 : ok/Bestellungbestätigen
+S7 --> S8 : Bestellungbestätigen/bestätigen
+S8 --> S9 : bestätigen/Essenausliefern
+S9 --> S10 : Essenausliefern/
+S10 --> [*]
+@enduml
