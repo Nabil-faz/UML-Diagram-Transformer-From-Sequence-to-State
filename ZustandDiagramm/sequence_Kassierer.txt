@@ -1,0 +1,20 @@
+@startuml
+[*] --> Idle 
+Idle --> system
+state system{
+[*] --> Idle0
+Idle0 -->S1 : Artikeleingeben
+state S1{
+S1 --> S1 : Artikel
+[*] --> Idle.S1
+Idle.S1 -->S1.1 : Artikeleingeben
+S1.1 --> S1.2 : Artikeleingeben/ Beschreibung, Preis
+S1.2 --> s1.3 :  Beschreibung, Preis/
+s1.3 --> [*]
+}
+S1 --> S2 : !(Artikel)
+S2 --> S3 : Gesamtbetraginkl.Steuern/Zahlung
+S3 --> S4 : Zahlung/Quittung
+S4 --> S5 : Quittung/
+S5 --> [*]
+@enduml
