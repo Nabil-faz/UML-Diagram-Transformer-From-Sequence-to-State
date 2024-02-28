@@ -1,0 +1,10 @@
+@startuml
+loop Artikel
+Kassierer -> system : Artikel eingeben
+system --> Kassierer : Beschreibung, Preis
+end
+Kassierer -> system : Endverkauf
+system --> Kassierer : Gesamtbetrag inkl. Steuern
+Kassierer -> system: Zahlung
+system --> Kassierer : Quittung
+@enduml
