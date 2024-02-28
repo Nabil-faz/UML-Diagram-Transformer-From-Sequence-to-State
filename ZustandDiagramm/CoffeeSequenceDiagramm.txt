@@ -1,0 +1,36 @@
+@startuml
+[*] --> Idle 
+Idle --> CoffeeMachineController : switch_on_off
+state CoffeeMachineController{
+[*] --> Idle0
+Idle0 -->S1 : set_time
+S1 --> S2 : set_time/set_on
+S2 --> S3 : set_on/set_heater_on
+S3 --> S4 : set_heater_on/
+state S4{
+S4 --> S4 : !CoffeeMachineModelgetTime==0
+[*] --> Idle.S4
+Idle.S4 -->S4.1 : count_down
+S4.1 --> S4.2 : count_down/ sub_time
+S4.2 --> s4.3 :  sub_time/
+s4.3 --> [*]
+}
+S4 --> S5 : !(!CoffeeMachineModelgetTime==0)
+S5 --> S6 : switch_to_mode_coffee/set_mode_coffee
+S6 --> S7 : set_mode_coffee/set_time
+S7 --> S8 : set_time/set_pump_on
+S8 --> S9 : set_pump_on/
+state S9{
+S9 --> S9 : !CoffeeMachineModelgetTime==0
+[*] --> Idle.S9
+Idle.S9 -->S9.1 : count_down
+S9.1 --> S9.2 : count_down/ sub_time
+S9.2 --> s9.3 :  sub_time/
+s9.3 --> [*]
+}
+S9 --> S10 : !(!CoffeeMachineModelgetTime==0)
+S10 --> S11 : set_off/set_pump_off
+S11 --> S12 : set_pump_off/set_heater_off
+S12 --> S13 : set_heater_off/
+S13 --> [*]
+@enduml
