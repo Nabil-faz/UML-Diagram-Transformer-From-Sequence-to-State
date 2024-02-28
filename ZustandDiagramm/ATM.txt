@@ -1,0 +1,18 @@
+@startuml
+[*] --> Idle 
+Idle --> ATM : InsertATMcard
+state ATM{
+[*] --> Idle0
+Idle0 -->S1 : RequestPIN
+S1 --> S2 : RequestPIN/EnterPINcode
+S2 --> S3 : EnterPINcode/verifyPINcode
+S3 --> S4 : verifyPINcode/PINValid
+S4 --> S5 : PINValid/Requestamount
+S5 --> S6 : Requestamount/Enteramount
+S6 --> S7 : Enteramount/Processtransaction
+S7 --> S8 : Processtransaction/Transactionsuccessful
+S8 --> S9 : Transactionsuccessful/Dispensecash
+S9 --> S10 : Dispensecash/printreceipt
+S10 --> S11 : printreceipt/
+S11 --> [*]
+@enduml
