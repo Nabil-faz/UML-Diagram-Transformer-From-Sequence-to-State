@@ -1,0 +1,16 @@
+@startuml
+Client -> ATM : Insert ATM card
+Client <- ATM : Request PIN
+Client -> ATM : Enter PIN code
+ATM -> Bank : verify PIN code
+Bank -> ATM : PIN Valid
+Client <- ATM : Request amount
+Client -> ATM : Enter amount
+ATM -> Bank : Process transaction
+ATM <- Bank : Transaction successful
+Client <- ATM : Dispense cash
+Client <- ATM : print receipt
+
+
+
+@enduml
