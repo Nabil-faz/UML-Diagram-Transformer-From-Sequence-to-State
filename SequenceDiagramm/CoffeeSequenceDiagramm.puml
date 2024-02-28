@@ -1,0 +1,23 @@
+@startuml
+Actor -> CoffeeMachineController : switch_on_off
+CoffeeMachineController -> CoffeeMachineController : set_time
+CoffeeMachineController -> CoffeeMachineController : set_on
+CoffeeMachineController -> CoffeeMachineController : set_heater_on
+loop !CoffeeMachineModel getTime==0
+CoffeeMachineController -> CoffeeMachineController : count_down
+CoffeeMachineController -> CoffeeMachineController : sub_time
+end
+CoffeeMachineController -> CoffeeMachineController : set_heater_off
+Actor -> CoffeeMachineController : switch_to_mode_coffee
+CoffeeMachineController -> CoffeeMachineController : set_mode_coffee
+CoffeeMachineController -> CoffeeMachineController : set_time
+CoffeeMachineController -> CoffeeMachineController : set_pump_on
+loop !CoffeeMachineModel getTime==0
+CoffeeMachineController -> CoffeeMachineController : count_down
+CoffeeMachineController -> CoffeeMachineController : sub_time
+end
+CoffeeMachineController -> CoffeeMachineController : switch_on_off
+CoffeeMachineController -> CoffeeMachineController : set_off
+CoffeeMachineController -> CoffeeMachineController : set_pump_off
+CoffeeMachineController -> CoffeeMachineController : set_heater_off
+@enduml
